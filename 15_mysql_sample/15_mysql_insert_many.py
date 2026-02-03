@@ -1,0 +1,31 @@
+import os
+from mysql.connector import connect, Error
+from dotenv import load_dotenv
+
+# Load Environment from .env
+load_dotenv()
+
+if __name__ == '__main__':
+    try:
+        with connect(
+            host=os.getenv('DB_HOST'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PWD'),
+            database=os.getenv('DB_DATABASE'),
+        ) as connection:
+            print(connection)
+            insert_table_query = """
+               INSERT INTO reviewers (first_name, last_name)
+                VALUES (%s, %s)
+            """
+            reviewers = [
+                ("Steven", "Kwok"),
+                ("Peter", "Chan"),
+                ("Mary", "Wong")
+            ]
+
+            with connection.cursor() as cursor:
+                cursor.executemany(insert_table_query, reviewers)
+                connection.commit()
+    except Error as e:
+        print(e)
