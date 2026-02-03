@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content_title %}{{ super() }} - Index{% endblock %}
+{% block content_main %}
+    <div class="row">
+        <div class="col-6">
+            <h1>Project A landing page</h1>
+        </div>
+        <div class="col-4">
+            <p>This is the index page {{name}}</p>
+            <a href="{{ url_for('welcome') }}">Go to Welcome Page</a>
+        </div>
+        <div class="col-2">
+            Ha ha
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='building.jpg') }}" class="card-img-top" alt="ERB">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                    <a href="{{ url_for('welcome') }}" class="btn btn-primary">Go Welcome Page</a>
+            </div>
+        </div>
+        <div class="col-4">
+            <ul class="list-group">
+                <li class="list-group-item"><i class="bi bi-bus-front"></i> Apple</li>
+                <li class="list-group-item"><i class="bi bi-bus-front"></i> Orange</li>
+                <li class="list-group-item"><i class="bi bi-bus-front"></i> Pear</li>
+                <li class="list-group-item"><i class="bi bi-bus-front"></i> Mango</li>
+            </ul>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Steven</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>40</td>
+        </tr>
+    </table>
+{% endblock %}
+{% block content_footer %}
+    2026 Flask Lesson
+{% endblock %}
