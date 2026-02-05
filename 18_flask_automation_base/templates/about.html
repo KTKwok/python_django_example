@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block main %}
+    <h1>About Us</h1>
+    <a href="{{ url_for('index') }}">Back to home</a>
+    <p>Our Products</p>
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>SKU</th>
+            <th>Price</th>
+        </tr>
+        {% for p in products %}
+        <tr class="{{ loop.cycle('table-primary', 'table-success') }}">
+            <td>{{ loop.index }}</td>
+            <td>{{ p.sku }}</td>
+            {% if p.price > 15 %}
+            <td style="color:red">{{ p.price }}</td>
+            {% else %}
+            <td>{{ p.price }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form method="post">
+        <label for="cust_email" class="form-label">Customer Email</label>
+        <input type="email" class="form-control" name="cust_email" placeholder="name@example.com">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
