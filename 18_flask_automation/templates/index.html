@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block main %}
+    <img src="{{ url_for('static', filename='building.jpg') }}" alt="Building"/>
+    <h1>ABC Company Web Site</h1>
+    <p style="color: blue;font-size: large">Current date time is <b>{{ time }}</b></p>
+{% endblock %}
