@@ -10,7 +10,7 @@
 
 {% block main_js %}
     <script>
-        fucntion updateDateTime() {
+        function updateDateTime() {
             const now = new Date();
 
             const date = now.toLocaleDateString('en-US', {
@@ -29,9 +29,11 @@
 
             document.getElementById('date').textContent = date;
             document.getElementById('datetime').textContent = time;
-
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
             
     </script>
 {% endblock %}
+
