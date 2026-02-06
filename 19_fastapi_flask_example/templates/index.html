@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block main %}
+    <img src="{{ url_for('static', filename='building.jpg') }}" alt="Building"/>
+    <h1>ABC Company Web Site</h1>
+    <p>Page load time is {{time}}</p>
+    <p style="color: blue;font-size: large">Current date time is</p>
+    <div id="date"></div>
+    <div id="datetime"></div>
+{% endblock %}
+
+{% block main_js %}
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+
+            const time = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            const date = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            document.getElementById('datetime').textContent = time;
+            document.getElementById('date').textContent = date;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+    </script>
+{% endblock %}
