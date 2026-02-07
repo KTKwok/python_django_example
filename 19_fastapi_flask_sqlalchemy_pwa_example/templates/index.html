@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block main %}
+    <h1>ABC Company</h1>
+    <p>Hi {{name}}</p>
+    <p>Number of User: {{user_count}}</p>
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        {% if users %}
+            {% for u in users %}
+            <tr class="{{ loop.cycle('table-primary', 'table-success') }}">
+                <td>
+                    {{u.id}}
+                </td>
+                <td>
+                    {{u.name}}
+                </td>
+                <td>{{u.email}}</td>
+                <td>
+                    <button class="btn btn-primary view-user-btn" data-user-id="{{u.id}}">
+                        View Details
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No Users found</td>
+            </tr>
+        {% endif %}
+    </table>
+    <div id="user-detail-card" class="card card-container shadow-sm d-none">
+        <img src="{{ url_for('static', filename='avator.png') }}" class="img-thumbnail card-img-top" alt="building">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <span id="detail-id"></span>: <span id="detail-name"></span>
+                </h5>
+                <p class="card-text">
+                    <span id="detail-email"></span>
+                </p>
+                <button id="close-detail" class="btn btn-secondary">Close</button>
+            </div>
+    </div>
+{% endblock %}
+
+{% block main_js %}
+    <script>
+        $(document).ready(
+            function(){
+                const $detailCard = $("#user-detail-card");
+                const $closeBtn = $("#close-detail");
+
+                $closeBtn.on("click", function() {
+                    $detailCard.addClass("d-none");
+                });
+
+                $(".view-user-btn").on("click", async function(){
+                    const userId = $(this).data("user-id");
+
+                    try{
+                        const response = await fetch("/api/users/"+userId);
+
+                        if(!response.ok){
+                            throw new Error("User not found");
+                        }
+                        const user = await response.json();
+
+                        $("#detail-id").text(user.id);
+                        $("#detail-name").text(user.name);
+                        $("#detail-email").text(user.email);
+
+                        $detailCard.removeClass("d-none");
+
+                    }
+                    catch(error) {
+                        alert("Error loading user: " + error.message);
+                    }
+                });
+            }
+        );
+    </script>
+{% endblock %}
