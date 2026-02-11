@@ -22,7 +22,7 @@ Continue from 22_travel_proj_basic_setup
 \travel_proj\travel_proj>pip install pillow
 
 6) Run the below command to create migrations file
-\travel_proj\travel_proj>python manage.py makemigration
+\travel_proj\travel_proj>python manage.py makemigrations
 
 7) Run the below command to create tables in DB
 \travel_proj\travel_proj>python manage.py migrate
@@ -31,5 +31,6 @@ Continue from 22_travel_proj_basic_setup
 
 9) Test using runserver
 \travel_proj\travel_proj>python manage.py runserver
+
 
 10) On browser, go to admin portal and create records for detainations
