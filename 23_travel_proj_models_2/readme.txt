@@ -15,6 +15,9 @@
 7) Test using runserver
 \travel_proj\travel_proj>python manage.py runserver
 
-*Note: admin portal account
+*Note:
+1)admin portal account
 admin
 1234
+
+2)for .env file, pleaes refer to the sample env.example
