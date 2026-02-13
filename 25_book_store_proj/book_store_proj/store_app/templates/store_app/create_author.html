@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if author %}
+    {{author.first_name}}<br/>
+    {{author.last_name}}<br/>
+    {{author.email}}<br/>
+    {{author.created_at}}<br/>
+    {{author.updated_at}}<br/>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>First Name</label>
+        <input type="text" name="first_name"><br/>
+        <label>Last Name</label>
+        <input type="text" name="last_name"><br/>
+        <label>Email</label>
+        <input type="email" name="email"><br/>
+        <button type="submit">Create Author</button>
+    </form>
+</body>
+</html>
