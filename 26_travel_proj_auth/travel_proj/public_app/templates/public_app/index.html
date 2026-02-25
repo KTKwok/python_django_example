@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <div
+        class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center text-white bg-cover bg-center bg-no-repeat"
+        style="background-image:url('{% static 'public_app/img/hong_kong.jpg' %}');">
+        <div class="col-md-6 p-lg-5 mx-auto my-5">
+            <h1 class="display-3 fw-bold">ABC Tour Company</h1>
+            <h3 class="fw-normal mb-3">
+                {{welcome}}
+            </h3>
+        </div>
+    </div>
+    <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <a class="icon-link" href="{% url 'tour_app:landing' %}">
+            Start Your Tour
+            <svg class="bi" aria-hidden="true">
+                <use xlink:href="#chevron-right"></use>
+            </svg>
+        </a>
+        <a class="icon-link" href="{% url 'public_app:about' %}">
+            About us
+            <svg class="bi" aria-hidden="true">
+                <use xlink:href="#chevron-right"></use>
+            </svg>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu leo in magna tincidunt efficitur. Nunc sollicitudin condimentum tortor ut ornare. Aliquam aliquam blandit pellentesque. Pellentesque efficitur rhoncus felis, non maximus neque gravida a. Phasellus tristique, mi non porta suscipit, mi massa viverra justo, sit amet feugiat velit tortor eu urna. Curabitur eu congue nisl, tristique pellentesque ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis sem, sollicitudin nec turpis non, egestas dapibus purus.
+        </div>
+        <div class="col-8">
+            Vivamus pellentesque purus vel pellentesque venenatis. Maecenas in elementum arcu. In id porta ligula, vel scelerisque lacus. Morbi diam nunc, dapibus et fringilla a, sollicitudin at lorem. Nunc vel tristique ipsum. Vivamus sagittis diam at suscipit aliquet. Fusce placerat diam mollis interdum feugiat. Pellentesque vehicula eu justo vel fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut metus dui, tristique eget nisi a, aliquet faucibus turpis. Fusce volutpat tempor porttitor. Sed quam metus, fermentum vitae faucibus sed, interdum vitae dolor. Etiam vitae ligula in lectus rhoncus vehicula eget vel magna. Ut imperdiet sed lectus id luctus.
+        </div>
+    </div>
+{% endblock %}

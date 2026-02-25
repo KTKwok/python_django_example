@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <h1>Welcome {{fullname}}</h1>
+    About Us Page
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img src="{% static 'public_app/img/learning.jpg' %}" class="img-fluid rounded-start" alt="Learning"/>
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Us</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Comment</label>
+                            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
