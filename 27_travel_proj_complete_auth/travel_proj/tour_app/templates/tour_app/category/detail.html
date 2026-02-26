@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <p class="fs-1"><i class="{{tour_category.icon}}"></i>{{tour_category.name}}</p>
+
+    <a class="btn btn-info" href="{% url 'tour_app:tour_category_update' tour_category.pk %}">Update</a>
+    <a class="btn btn-warning" href="{% url 'tour_app:tour_category_delete' tour_category.pk %}">Delete</a>
+
+{% endblock %}

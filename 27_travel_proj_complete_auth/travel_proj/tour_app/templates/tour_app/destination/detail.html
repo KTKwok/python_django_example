@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <p class="fs-1">{{destination.name}}</p>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if destination.image %}
+                <img src="{{destination.image.url}}" class="img-fluid rounded-start" alt="{{destination.name}}">
+                {% else %}
+                <img src="{% static 'tour_app/img/cyber_city.png' %}" class="img-fluid rounded-start" alt="Cyber City">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ destination.name }}</h5>
+                    <p class="card-text">{{ destination.description }}</p>
+                    <p class="card-text">
+                        <a class="btn btn-info" href="{% url 'tour_app:destination_update' destination.pk %}">Update</a>
+                        <a class="btn btn-warning" href="{% url 'tour_app:destination_delete' destination.pk %}">Delete</a>
+                    </p>
+                    <a href="{% url 'tour_app:destinations' %}">
+                        <small class="text-body-secondary">Back</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

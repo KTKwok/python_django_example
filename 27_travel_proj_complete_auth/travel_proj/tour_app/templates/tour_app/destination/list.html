@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load role_tags %}
+
+{% block body_content %}
+    <p class="fs-1">Full destinations</p>
+    {% has_role 'M' 'O' as access %}
+    {% if access %}
+    <p><a class="btn btn-primary" href="{% url "tour_app:destination_create" %}">New Destination</a></p>
+    {% endif %}
+    <div class="card-group">
+    {% for d in destinations %}
+        <div class="card">
+            {% if d.image %}
+            <img src="{{d.image.url}}" class="card-image-top" alt="{{d.name}}">
+            {% else %}
+            <img src="{% static 'tour_app/img/cyber_city.png' %}" class="card-image-top" alt="Cyber City">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ d.name }}</h5>
+                <p class="card-text">{{ d.description|truncatechars:100 }}</p>
+                <a href="{% url 'tour_app:destination' d.id %}">
+                    <small class="text-body-secondary">Know More</small>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
