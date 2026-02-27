@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load role_tags %}
+
+{% block body_content %}
+    <p class="fs-1">Category List</p>
+    {% has_role 'M' 'O' as access %}
+    {% if access %}
+    <p><a class="btn btn-primary" href="{% url "tour_app:tour_category_create" %}">New Category</a></p>
+    {% endif %}
+    <div class="card-group">
+    {% for c in tour_categories %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="{{c.icon}}"></i>{{c.name}}</h5>
+                <p class="card-text">
+                    <a href="{% url 'tour_app:tour_category' c.id %}">
+                        <small class="text-body-secondary">Detail</small>
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <p class="fs-1">Your next destination~~</p>
+    <div class="card-group">
+    {% for d in dests %}
+        <div class="card">
+            <img src="{{d.image.url}}" class="card-image-top" alt="{{d.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{ d.name }}</h5>
+                <p class="card-text">{{ d.description|truncatechars:100 }}</p>
+                <a href="{% url 'tour_app:destination' d.id %}">
+                    <small class="text-body-secondary">Know More</small>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
